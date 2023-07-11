@@ -1,0 +1,7 @@
+<xml xmlns="https://developers.google.com/blockly/xml"><variables><variable id="+wDk#vSxtCjf{(rmK_1*">_1</variable></variables><block type="device_forever" id="WbW]nib,$Mv+*uwr~+q0" x="0" y="0"><statement name="HANDLER"><block type="controls_if" id="96o.6.fdE6p4loNWRU89"><value name="IF0"><shadow type="logic_boolean"><field name="BOOL">TRUE</field></shadow><block type="custom_fib" id="ZD(mysXs!JI`:v(v-k*="></block></value><statement name="DO0"><block type="device_show_leds" id="nZe!+V_b(pJ-Lx=#]F~z"><field name="LEDS">`
+        . . . . . 
+        . . . . # 
+        # . . . # 
+        . # . # . 
+        . . # . .
+        `</field></block></statement></block></statement></block><block type="function_definition" id="28v;~fL/5Z#n8d~]jm4*" x="239" y="194"><mutation name="1" functionid="}u_(Yvu8X_1Be+2Z2kmZ"><arg name="sprite" id="88L[,H4HJd4F+G2(=9QT" type="game.LedSprite"></arg></mutation><field name="function_name">1</field></block></xml>
