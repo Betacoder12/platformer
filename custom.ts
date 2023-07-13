@@ -1,41 +1,85 @@
 let bool: boolean
+bool = false
+let q = [-999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999]
+let w = [-999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999]
+let mm = game.createSprite(2, 2)
 /**
 * Use this file to define custom functions and blocks.
 */
 
 enum MyEnum {
-    //% block="one"
+    //% block="right"
     One,
-    //% block="two"
-    Two
+    //% block="left"
+    Two,
+    //% block="up"
+    Three,
+    //% block="down"
+    Four
 }
 
 /**
- * Custom blocks
+ * I hate microsoft!!!!
  */
 //% weight=100 color=#0fbc11 icon=""
-namespace custom {
+namespace platformer {
     /**
-     * TODO: describe your function here
-     * @param n describe parameter here, eg: 5
-     * @param s describe parameter here, eg: "Hello"
-     * @param e describe parameter here
+     * makes a wall
      */
-    //% block="make wall at x$x y$y that blocks $blocker"
-    export function foo(y: number, x: number, blocker: game.LedSprite ): void {
+    //% block="make wall at x$x y$y"
+    export function foo(y: number, x: number): void {
         led.plot(x, y)
-        if (blocker.get(LedSpriteProperty.X) == x && blocker.get(LedSpriteProperty.Y) == y ) {
-              
-            
+        w.push(y)
+        q.push(x)
+        
         }
     }
-
     /**
-     * TODO: describe your function here
-     * @param value describe value here, eg: 5
+     * tests  if a sprite hits a wall
      */
-    //% block
-    export function fib(): boolean {
-      return  input.buttonIsPressed(Button.A) 
+    //% block="if $b hit wall then"
+    export function fib(b: game.LedSprite ): boolean {
+         if (convertToText(q).includes(convertToText(b.get(LedSpriteProperty.X))) && convertToText(w).includes(convertToText(b.get(LedSpriteProperty.Y))))  {
+         return true   
+
+        }else{
+            return false
+        }
+      
     }
-}
+    /**
+     *makes a sprite move in any direction 
+     */
+    //% block="move $sprite $a $pix pixels"
+    export function fee(pix: number, a:MyEnum, sprite: game.LedSprite): void {
+        
+        
+        if (a == MyEnum.One && (convertToText(q).includes(convertToText(b.get(LedSpriteProperty.X) + 1)))) {
+            sprite.set(LedSpriteProperty.Direction, 90)
+            sprite.move(pix)
+        } else if (a == MyEnum.Two && (convertToText(q).includes(convertToText(b.get(LedSpriteProperty.X) - 1)))) {
+            sprite.set(LedSpriteProperty.Direction, 270)
+            sprite.move(pix)
+        } else if (a == MyEnum.Three && (convertToText(q).includes(convertToText(b.get(LedSpriteProperty.Y) - 1)))) {
+            sprite.set(LedSpriteProperty.Direction, 0)
+            sprite.move(pix)
+        } else if (a == MyEnum.Four && (convertToText(q).includes(convertToText(b.get(LedSpriteProperty.Y) + 1)))) {
+            sprite.set(LedSpriteProperty.Direction, 180)
+            sprite.move(pix)
+        }
+        
+    }
+    /**
+     * destroys a wall
+     */
+    //% block=" remove wall at x$x y$y"
+    export function destroy(x: number, y:number): void {
+      q.pop(x)
+      w.pop(y)
+      led.unplot(x, y)
+     }
+    
+    export function jump(pix: number): void {
+
+    }
+ }
